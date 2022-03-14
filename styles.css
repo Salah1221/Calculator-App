@@ -1,0 +1,203 @@
+/* Start Global Rules */
+:root {
+  --main-background: hsl(222, 26%, 31%);
+  --toggle-background: hsl(223, 31%, 20%);
+  --screen-background: hsl(224, 36%, 15%);
+  --del-key-background: hsl(225, 21%, 49%);
+  --del-key-shadow: hsl(224, 28%, 35%);
+  --equals-background: hsl(6, 63%, 50%);
+  --equals-shadow: hsl(6, 70%, 34%);
+  --key-background: hsl(30, 25%, 89%);
+  --key-shadow: hsl(28, 16%, 65%);
+  --text-color: hsl(0, 0%, 100%);
+  --numbers-color: hsl(221, 14%, 31%);
+  --equals-text-color: hsl(0, 0%, 100%);
+  --focus-color: cyan;
+}
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  transition: color 0.3s, background-color 0.3s;
+}
+body {
+  font-size: 32px;
+  font-family: "Spartan", sans-serif;
+  background-color: var(--main-background);
+}
+h1 {
+  font-size: 28px;
+  color: var(--text-color);
+}
+button {
+  font-size: 32px;
+  font-family: "Spartan", sans-serif;
+}
+a {
+  color: var(--equals-background);
+  text-decoration: none;
+}
+/* End Global Rules */
+/* Start Calculator's Style */
+main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calculator {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 500px;
+}
+.calculator .heading-and-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30px;
+}
+.calculator .heading-and-toggle .toggle-container > span {
+  color: var(--text-color);
+  text-transform: uppercase;
+  font-size: 10px;
+  margin-right: 22px;
+}
+.calculator .heading-and-toggle .toggle-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.calculator .heading-and-toggle .toggle-container > span {
+  display: flex;
+  align-items: center;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.calculator .heading-and-toggle .toggle-container .toggle {
+  position: relative;
+  border-radius: 30px;
+}
+.calculator .heading-and-toggle .toggle-container .toggle div {
+  width: 70px;
+  height: 25px;
+  border-radius: 30px;
+  background-color: var(--toggle-background);
+  position: relative;
+  cursor: pointer;
+  user-select: all;
+}
+.calculator .heading-and-toggle .toggle-container .toggle:focus-visible {
+  outline: 3px dotted var(--focus-color);
+}
+.calculator
+  .heading-and-toggle
+  .toggle-container
+  .toggle
+  div:not(.nums)::before {
+  content: "";
+  position: absolute;
+  background-color: var(--equals-background);
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  top: 5px;
+  left: 5px;
+}
+.calculator .heading-and-toggle .toggle-container .toggle .nums {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  top: -25px;
+  background-color: transparent;
+}
+.calculator .heading-and-toggle .toggle-container .toggle .nums span {
+  font-size: 12px;
+  color: var(--text-color);
+  display: flex;
+}
+.calculator .result {
+  color: var(--text-color);
+  background-color: var(--screen-background);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 30px;
+  padding-top: 35px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 45px;
+  overflow-x: hidden;
+}
+.calculator .keypad {
+  background-color: var(--toggle-background);
+  display: grid;
+  grid-template-columns: repeat(4, calc(25% - 15px));
+  gap: 20px;
+  padding: 25px;
+  border-radius: 10px;
+}
+.calculator .keypad button {
+  border-radius: 10px;
+  color: var(--numbers-color);
+  border: none;
+  background: var(--key-background);
+  border-bottom: 4px solid var(--key-shadow);
+  line-height: 1;
+  padding-top: 5px;
+  height: 60px;
+  transition: all 0.2s;
+}
+.calculator .keypad button:focus-visible {
+  outline: 3px dotted var(--focus-color);
+}
+.calculator .keypad button:active {
+  border-width: 0;
+  transform: translateY(4px);
+}
+.calculator .keypad .bigBtn {
+  grid-column: span 2;
+}
+.calculator .keypad .small-font {
+  font-size: 20px;
+}
+.calculator .keypad .delete,
+.calculator .keypad .reset {
+  background: var(--del-key-background);
+  border-color: var(--del-key-shadow);
+  color: var(--text-color);
+}
+.calculator .keypad .equals {
+  background: var(--equals-background);
+  border-color: var(--equals-shadow);
+  color: var(--text-color);
+}
+/* End Calculator's Style */
+/* Start Attribution Section */
+.attribution {
+  font-size: 11px;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-color);
+}
+/* End Attribution Section */
+
+/* Adding font face 'Spartan' */
+@font-face {
+  font-family: "Spartan";
+  src: url(./Spartan-Bold.ttf);
+  font-weight: normal;
+  font-style: normal;
+}

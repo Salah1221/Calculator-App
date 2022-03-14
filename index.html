@@ -1,26 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+  <!-- Linking the main CSS file -->
+  <link rel="stylesheet" href="./styles.css">
+  <!-- Linking the JS file -->
+  <script src="./main.js" defer></script>
   <title>Frontend Mentor | Calculator app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
+
 <body>
-
-
-  
+  <main>
+    <div class="calculator">
+      <div class="heading-and-toggle">
+        <h1>calc</h1>
+        <div class="toggle-container">
+          <span>Theme</span>
+          <div class="toggle" tabindex="1">
+            <div class="nums">
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <div class="result">0</div>
+      <div class="keypad">
+        <button tabindex="2">7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="small-font delete">DEL</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button class="operator">+</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button class="operator">-</button>
+        <button>.</button>
+        <button>0</button>
+        <button class="operator">/</button>
+        <button class="operator">x</button>
+        <button class="bigBtn small-font reset">RESET</button>
+        <button class="bigBtn small-font equals operator">=</button>
+      </div>
+    </div>
+  </main>
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Salah Najem</a>.
   </div>
 </body>
+
 </html>
