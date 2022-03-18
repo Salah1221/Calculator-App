@@ -80,7 +80,7 @@ deleteBtn.onclick = () => {
 operatorBtns.forEach((btn) => {
   btn.onclick = () => {
     operatorPressed = true;
-    if (temp !== -1) {
+    if (temp !== -1 && operands[0] === 0) {
       operands[0] = temp;
       temp = -1;
     }
