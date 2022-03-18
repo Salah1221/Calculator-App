@@ -9,7 +9,8 @@ let operands = [0, 0],
   operatorPressed = false,
   result = 0,
   operator = "❌",
-  flag = false;
+  flag = false,
+  temp = -1;
 let arr;
 let updateResult = (oper) => {
   if (oper === "❌") {
@@ -35,11 +36,18 @@ let updateResult = (oper) => {
       flag = true;
       break;
   }
+  console.log(operands);
 };
 numberBtns.forEach((btn) => {
   btn.onclick = () => {
+    if (temp !== -1) temp = -1;
+    if (operator === "=") {
+      temp = operands[0];
+      operands = [0, 0];
+      operator = "❌";
+    }
     if (operatorPressed) {
-      resultScreen.innerHTML = "";
+      resultScreen.innerHTML = "0";
       operatorPressed = false;
     }
     if (resultScreen.innerHTML === "0" && btn.innerHTML !== ".") {
@@ -48,8 +56,10 @@ numberBtns.forEach((btn) => {
     if (btn.innerHTML === "." && resultScreen.innerHTML.includes(".")) return;
     resultScreen.innerHTML = resultScreen.innerHTML.split(",").join("");
     resultScreen.innerHTML += btn.innerHTML;
-    resultScreen.innerHTML = (+resultScreen.innerHTML).toLocaleString();
-    if (btn.innerHTML === ".") resultScreen.innerHTML += ".";
+    if (resultScreen.innerHTML.split(".")[0].length > 3) {
+      resultScreen.innerHTML = (+resultScreen.innerHTML).toLocaleString();
+      if (btn.innerHTML === ".") resultScreen.innerHTML += ".";
+    }
     updateResult(operator);
   };
 });
@@ -71,6 +81,10 @@ deleteBtn.onclick = () => {
 operatorBtns.forEach((btn) => {
   btn.onclick = () => {
     operatorPressed = true;
+    if (temp !== -1) {
+      operands[0] = temp;
+      temp = -1;
+    }
     if (flag === true) {
       if (result.toString().length > 12) {
         let aux = result.toString().split(".");
