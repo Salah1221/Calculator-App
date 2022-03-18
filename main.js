@@ -49,6 +49,7 @@ numberBtns.forEach((btn) => {
     resultScreen.innerHTML = resultScreen.innerHTML.split(",").join("");
     resultScreen.innerHTML += btn.innerHTML;
     resultScreen.innerHTML = (+resultScreen.innerHTML).toLocaleString();
+    if (btn.innerHTML === ".") resultScreen.innerHTML += ".";
     updateResult(operator);
   };
 });
