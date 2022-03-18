@@ -36,7 +36,6 @@ let updateResult = (oper) => {
       flag = true;
       break;
   }
-  console.log(operands);
 };
 numberBtns.forEach((btn) => {
   btn.onclick = () => {
