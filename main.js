@@ -53,6 +53,7 @@ numberBtns.forEach((btn) => {
       resultScreen.innerHTML = "";
     }
     if (btn.innerHTML === "." && resultScreen.innerHTML.includes(".")) return;
+    if (resultScreen.innerHTML.length >= 15) return;
     resultScreen.innerHTML = resultScreen.innerHTML.split(",").join("");
     resultScreen.innerHTML += btn.innerHTML;
     if (resultScreen.innerHTML.split(".")[0].length > 3) {
@@ -87,7 +88,7 @@ operatorBtns.forEach((btn) => {
     if (flag === true) {
       if (result.toString().length > 12) {
         let aux = result.toString().split(".");
-        if (aux.length == 2 && aux[1] > aux[0]) {
+        if (aux.length == 2 && aux[1].length > aux[0].length) {
           resultScreen.innerHTML = result.toString().slice(0, 12);
         } else {
           resultScreen.innerHTML = result.toExponential(2);
@@ -107,9 +108,8 @@ let toggleBall = document.querySelector(".ball");
 let toggle = document.querySelector(".toggle div:not(.nums)");
 let counter = 0;
 let html = document.querySelector(":root");
-toggle.onclick = () => {
-  if (counter === 3) counter = 0;
-  if (counter === 2) {
+function themeToggler(ind) {
+  if (ind === 0) {
     toggleBall.style.left = "5px";
     html.style.setProperty("--main-background", "hsl(222, 26%, 31%)");
     html.style.setProperty("--toggle-background", "hsl(223, 31%, 20%)");
@@ -124,7 +124,7 @@ toggle.onclick = () => {
     html.style.setProperty("--text-color", "hsl(0, 0%, 100%)");
     html.style.setProperty("--equals-text-color", "hsl(0, 0%, 100%)");
     document.querySelector(".equals").style.color = "hsl(0, 0%, 100%)";
-  } else if (counter === 1) {
+  } else if (ind === 2) {
     toggleBall.style.left = "50px";
     html.style.setProperty("--main-background", "hsl(268, 75%, 9%)");
     html.style.setProperty("--toggle-background", "hsl(268, 71%, 12%)");
@@ -155,5 +155,18 @@ toggle.onclick = () => {
     html.style.setProperty("--equals-text-color", "hsl(0, 0%, 100%)");
     document.querySelector(".equals").style.color = "hsl(0, 0%, 100%)";
   }
+}
+toggle.onclick = () => {
   counter++;
+  if (counter === 3) counter = 0;
+  themeToggler(counter);
+  localStorage.setItem("prefers-color-scheme", counter.toString());
 };
+
+// Save Theme to Local storage
+if (localStorage.getItem("prefers-color-scheme")) {
+  counter = +localStorage.getItem("prefers-color-scheme");
+  themeToggler(counter);
+} else {
+  localStorage.setItem("prefers-color-scheme", "2");
+}
