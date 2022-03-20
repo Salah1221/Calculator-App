@@ -33,7 +33,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Solution](https://github.com/Salah1221/Calculator-App/settings/pages)
+- Solution URL: [Solution](https://github.com/Salah1221/Calculator-App)
 - Live Site URL: [Live Demo](https://salah1221.github.io/Calculator-App/)
 
 ## My process
