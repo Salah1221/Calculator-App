@@ -60,6 +60,7 @@ numberBtns.forEach((btn) => {
       resultScreen.innerHTML = (+resultScreen.innerHTML).toLocaleString();
       if (btn.innerHTML === ".") resultScreen.innerHTML += ".";
     }
+    console.log(operands);
     updateResult(operator);
   };
 });
@@ -88,7 +89,9 @@ operatorBtns.forEach((btn) => {
     if (flag === true) {
       if (result.toString().length > 12) {
         let aux = result.toString().split(".");
-        if (aux.length == 2 && aux[1].length > aux[0].length) {
+        if (result.toString().split("e").length > 1) {
+          resultScreen.innerHTML = result.toExponential(2);
+        } else if (aux.length == 2 && aux[1].length > aux[0].length) {
           resultScreen.innerHTML = result.toString().slice(0, 12);
         } else {
           resultScreen.innerHTML = result.toExponential(2);
